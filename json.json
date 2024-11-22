@@ -1,0 +1,76 @@
+{
+    "content": [
+        {
+            "uid": "670ff02b1a361219bd76b09c",
+            "name": "prueba product",
+            "description": "descripcio",
+            "purchasePrice": 200.0,
+            "retailPrice": 250.0,
+            "wholesalePrice": 230.0,
+            "bulkWholesalePrice": 325.0,
+            "stock": 10,
+            "technicalData": "hdhf",
+            "subcategory": {
+                "_id": "670feee3c9761e50ffdba80d",
+                "name": "subcateroria",
+                "description": "descripcion subcategoria",
+                "status": true,
+                "category": {
+                    "_id": "66fc1100ada03d2dafd4746c",
+                    "name": "categoria",
+                    "description": "Categoria descripcion",
+                    "status": true
+                }
+            },
+            "preview": {
+                "uid": null,
+                "title": "preview_prueba",
+                "mimeType": null,
+                "url": "http://localhost:8080/media/product/load-file/prueba product-bbae0de5-49fe-43fe-a2f6-cf0bf42f4f71_preview.jpg",
+                "fileBase64": null
+            },
+            "status": false,
+            "images": [
+                {
+                    "uid": null,
+                    "title": "1",
+                    "mimeType": null,
+                    "url": "http://localhost:8080/media/product/load-file/prueba product-844e9f15-5d04-4379-84c3-4fef974b540b.jpg",
+                    "fileBase64": null
+                },
+                {
+                    "uid": null,
+                    "title": "2",
+                    "mimeType": null,
+                    "url": "http://localhost:8080/media/product/load-file/prueba product-27c69a3c-9050-4a85-b9e3-d4087a15c8ad.jpg",
+                    "fileBase64": null
+                }
+            ]
+        }
+    ],
+    "pageable": {
+        "pageNumber": 0,
+        "pageSize": 20,
+        "sort": {
+            "empty": true,
+            "sorted": false,
+            "unsorted": true
+        },
+        "offset": 0,
+        "paged": true,
+        "unpaged": false
+    },
+    "last": true,
+    "totalElements": 12,
+    "totalPages": 1,
+    "first": true,
+    "numberOfElements": 12,
+    "size": 20,
+    "number": 0,
+    "sort": {
+        "empty": true,
+        "sorted": false,
+        "unsorted": true
+    },
+    "empty": false
+}

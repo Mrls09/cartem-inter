@@ -1,31 +1,31 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + NextUI",
+  name: "Cartem",
   description: "Make beautiful websites regardless of your design experience.",
   navItemsAdmin: [
     {
       label: "Inicio",
-      href: "/",
+      href: "/dashboard",
     },
     {
       label: "Productos",
-      href: "/docs",
+      href: "/dashboard/products",
     },
     {
-      label: "Personal",
-      href: "/pricing",
+      label: "Personas",
+      href: "/dashboard/persons",
     },
     {
-      label: "Clientes",
-      href: "/blog",
+      label: "Ventas",
+      href: "/about",
     },
     {
-      label: "About",
+      label: "Reportes",
       href: "/about",
     },
   ],
-  navItemsCustomer: [
+  navItemsEmployee: [
     {
       label: "Inicio",
       href: "/",

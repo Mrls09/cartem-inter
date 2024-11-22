@@ -1,3 +1,4 @@
+"use client"
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -7,6 +8,7 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@nextui-org/navbar";
+import Cookies from "js-cookie";
 import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
@@ -25,8 +27,19 @@ import {
   SearchIcon,
   Logo,
 } from "@/components/icons";
+import { useAuth } from "../context/AuthContext";
+import { useEffect, useState } from "react";
+import { TrashIcon } from '@heroicons/react/24/solid';
+import { User } from "lucide-react";
+
 
 export const Navbar = () => {
+  const { logout } = useAuth();
+  const [email, setEmail] = useState<string | null>(null);
+  useEffect(() => {
+    const storedEmail = Cookies.get("email");
+    setEmail(storedEmail || null);
+  }, []);
   const searchInput = (
     <Input
       aria-label="Search"
@@ -52,9 +65,9 @@ export const Navbar = () => {
     <NextUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
+          <NextLink style={{ color: "white" }} className="flex justify-start items-center gap-1" href="/">
             <Logo />
-            <p className="font-bold text-inherit">CARTEM</p>
+            <p className="font-bold text-inherit ">CARTEM</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
@@ -79,19 +92,23 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
         <NavbarItem className="hidden md:flex">
           <Button
             isExternal
             as={Link}
             className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger" />}
+            href='/profile'
             variant="flat"
           >
-            usuario@gmail.com
+            
+            {email}
           </Button>
         </NavbarItem>
+        <NavbarItem className="hidden lg:flex"><Button size="sm" variant="light" color="danger" onClick={logout}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
+          <path fillRule="evenodd" d="M16.5 3.75a1.5 1.5 0 0 1 1.5 1.5v13.5a1.5 1.5 0 0 1-1.5 1.5h-6a1.5 1.5 0 0 1-1.5-1.5V15a.75.75 0 0 0-1.5 0v3.75a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5.25a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3V9A.75.75 0 1 0 9 9V5.25a1.5 1.5 0 0 1 1.5-1.5h6ZM5.78 8.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 0 0 0 1.06l3 3a.75.75 0 0 0 1.06-1.06l-1.72-1.72H15a.75.75 0 0 0 0-1.5H4.06l1.72-1.72a.75.75 0 0 0 0-1.06Z" clipRule="evenodd" />
+        </svg>
+        </Button></NavbarItem>
+        <ThemeSwitch />
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
