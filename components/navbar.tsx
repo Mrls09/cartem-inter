@@ -36,9 +36,13 @@ import { User } from "lucide-react";
 export const Navbar = () => {
   const { logout } = useAuth();
   const [email, setEmail] = useState<string | null>(null);
+  const [role, setRole] = useState<string | null>(null);
+
   useEffect(() => {
     const storedEmail = Cookies.get("email");
+    const storedRole = Cookies.get("role");
     setEmail(storedEmail || null);
+    setRole(storedRole || null);
   }, []);
   const searchInput = (
     <Input
@@ -68,24 +72,50 @@ export const Navbar = () => {
           <NextLink style={{ color: "white" }} className="flex justify-start items-center gap-1" href="/">
             <Logo />
             <p className="font-bold text-inherit ">CARTEM</p>
+            {role ? (role?.includes("ROLE_ADMIN") ? (<p className="font-bold text-inherit ">ADMIN</p>
+            ) : (<p className="font-bold text-inherit ">WORKER</p>
+            )) : (<div></div>)}
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItemsAdmin.map((item) => (
-            <NavbarItem key={item.href}>
-              <NextLink
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
-                )}
-                color="foreground"
-                href={item.href}
-              >
-                {item.label}
-              </NextLink>
-            </NavbarItem>
-          ))}
-        </ul>
+        {role ? (
+          role.includes("ROLE_ADMIN") ? (
+            <ul className="hidden lg:flex gap-4 justify-start ml-2">
+              {siteConfig.navItemsAdmin.map((item) => (
+                <NavbarItem key={item.href}>
+                  <NextLink
+                    className={clsx(
+                      linkStyles({ color: "foreground" }),
+                      "data-[active=true]:text-primary data-[active=true]:font-medium",
+                    )}
+                    color="foreground"
+                    href={item.href}
+                  >
+                    {item.label}
+                  </NextLink>
+                </NavbarItem>
+              ))}
+            </ul>
+          ) : (
+            <ul className="hidden lg:flex gap-4 justify-start ml-2">
+              {siteConfig.navItemsEmployee.map((item) => (
+                <NavbarItem key={item.href}>
+                  <NextLink
+                    className={clsx(
+                      linkStyles({ color: "foreground" }),
+                      "data-[active=true]:text-primary data-[active=true]:font-medium",
+                    )}
+                    color="foreground"
+                    href={item.href}
+                  >
+                    {item.label}
+                  </NextLink>
+                </NavbarItem>
+              ))}
+            </ul>
+          )
+        ) : (
+          <div>Cargando...</div>
+        )}
       </NavbarContent>
 
       <NavbarContent
@@ -100,7 +130,7 @@ export const Navbar = () => {
             href='/profile'
             variant="flat"
           >
-            
+
             {email}
           </Button>
         </NavbarItem>

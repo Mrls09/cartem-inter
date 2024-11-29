@@ -10,11 +10,11 @@ export const siteConfig = {
     },
     {
       label: "Productos",
-      href: "/dashboard/products",
+      href: "/dashboard/admin/products",
     },
     {
       label: "Personas",
-      href: "/dashboard/persons",
+      href: "/dashboard/admin/persons",
     },
     {
       label: "Ventas",
@@ -32,7 +32,7 @@ export const siteConfig = {
     },
     {
       label: "Productos",
-      href: "/docs",
+      href: "/dashboard/worker/products",
     },
     {
       label: "Pedidos",

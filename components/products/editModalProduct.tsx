@@ -11,7 +11,7 @@ import Alert from "../alert";
 interface EditModalProductAttachmentProps {
     isOpen: boolean;
     onOpenChange: () => void;
-    token: string;
+    token: string | null;
     getProduct: () => void;
     product: Product;
 }

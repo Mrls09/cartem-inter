@@ -11,7 +11,7 @@ import Alert from "../alert";
 interface ProductModalProps {
     isOpen: boolean;
     onOpenChange: () => void;
-    token: string;
+    token: string | null;
     getProduct: () => void;
 }
 
